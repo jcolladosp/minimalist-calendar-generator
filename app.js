@@ -241,7 +241,7 @@ function generatePDF() {
     dayNames.push(dayLetters[(startDay + i) % 7]);
   }
 
-  pdf.setFont('helvetica', 'normal');
+  pdf.setFont('Inter_28pt-Medium', 'normal');
   pdf.setFontSize(10);
   pdf.setTextColor(150, 150, 150);
 
@@ -282,10 +282,12 @@ function generatePDF() {
   }
 
   pdf.setFontSize(58);
-  pdf.setFont('helvetica', 'bold');
+  pdf.setFont('Inter_28pt-Medium', 'normal');
   pdf.setTextColor(50, 50, 50);
   // Padding del mes
-  pdf.text(t.monthsShort[month], margin, calendarStartY + 11.5);
+  pdf.text(t.monthsShort[month], margin, calendarStartY + 11.5, {
+    charSpace: 1,
+  });
 
   pdf.save(`${t.monthsShort[month].toLowerCase()}-${year}.pdf`);
 }
