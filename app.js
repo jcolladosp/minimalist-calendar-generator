@@ -16,6 +16,8 @@ const translations = {
     addBtn: 'Añadir',
     dropText: 'Arrastra una imagen o haz clic aquí',
     downloadBtn: 'Descargar PDF',
+    font: 'Fuente',
+    fontStyle: 'Estilo',
     months: [
       'Enero',
       'Febrero',
@@ -56,6 +58,8 @@ const translations = {
     addBtn: 'Add',
     dropText: 'Drop an image or click here',
     downloadBtn: 'Download PDF',
+    font: 'Font',
+    fontStyle: 'Style',
     months: [
       'January',
       'February',
@@ -108,6 +112,8 @@ function setLanguage(lang) {
   document.getElementById('labelMonth').textContent = t.month;
   document.getElementById('labelStartDay').textContent = t.startDay;
   document.getElementById('labelHolidays').textContent = t.holidays;
+  document.getElementById('labelFont').textContent = t.font;
+  document.getElementById('labelFontStyle').textContent = t.fontStyle;
   document.getElementById('btnAddHoliday').textContent = t.addBtn;
   document.getElementById('generateBtn').textContent = t.downloadBtn;
 
@@ -190,6 +196,8 @@ function generatePDF() {
   const year = parseInt(document.getElementById('year').value);
   const month = parseInt(document.getElementById('month').value);
   const startDay = parseInt(document.getElementById('startDay').value);
+  const fontFamily = document.getElementById('fontFamily').value;
+  const fontStyle = document.getElementById('fontStyle').value;
   const t = translations[currentLang];
 
   if (!uploadedImage) return;
@@ -282,7 +290,7 @@ function generatePDF() {
   }
 
   pdf.setFontSize(58);
-  pdf.setFont('Inter_28pt-Medium', 'normal');
+  pdf.setFont(fontFamily, fontStyle);
   pdf.setTextColor(50, 50, 50);
   // Padding del mes
   pdf.text(t.monthsShort[month], margin, calendarStartY + 11.5, {
@@ -292,11 +300,56 @@ function generatePDF() {
   pdf.save(`${t.monthsShort[month].toLowerCase()}-${year}.pdf`);
 }
 
+function updateFontStyles() {
+  const fontFamily = document.getElementById('fontFamily').value;
+  const fontStyleSelect = document.getElementById('fontStyle');
+  const currentStyle = fontStyleSelect.value;
+
+  // Limpiar opciones
+  fontStyleSelect.innerHTML = '';
+
+  // Definir estilos disponibles según la fuente
+  let availableStyles = [];
+  if (fontFamily === 'Inter_28pt-Medium') {
+    availableStyles = [{ value: 'normal', label: 'Normal' }];
+  } else {
+    availableStyles = [
+      { value: 'normal', label: 'Normal' },
+      { value: 'bold', label: 'Bold' },
+      { value: 'italic', label: 'Italic' },
+      { value: 'bolditalic', label: 'Bold Italic' },
+    ];
+  }
+
+  // Añadir opciones
+  availableStyles.forEach((style) => {
+    const option = document.createElement('option');
+    option.value = style.value;
+    option.textContent = style.label;
+    fontStyleSelect.appendChild(option);
+  });
+
+  // Restaurar selección si está disponible
+  if (availableStyles.some((s) => s.value === currentStyle)) {
+    fontStyleSelect.value = currentStyle;
+  } else {
+    fontStyleSelect.value = 'normal';
+  }
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   setLanguage('es');
   document.getElementById('startDay').value = '1';
   document.getElementById('month').value = '0';
+
+  // Inicializar estilos de fuente
+  updateFontStyles();
+
+  // Listener para cambio de fuente
+  document
+    .getElementById('fontFamily')
+    .addEventListener('change', updateFontStyles);
 
   const dropZone = document.getElementById('dropZone');
   const imageInput = document.getElementById('imageInput');
