@@ -1,333 +1,335 @@
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px 20px 20px;
-    background: #fafafa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 20px 20px;
+  background: #fafafa;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
 }
 
 .lang-switcher {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .wrapper {
-    width: 100%;
-    max-width: 500px;
-    position: relative;
-    margin-top: 40px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  margin-top: 40px;
 }
 
 .lang-btn {
-    padding: 8px 16px;
-    border: 2px solid #222;
-    background: #fff;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9em;
+  padding: 8px 16px;
+  border: 2px solid #222;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
 }
 
 .lang-btn:hover {
-    background: #f0f0f0;
+  background: #f0f0f0;
 }
 
 .lang-btn.active {
-    background: #222;
-    color: #fff;
+  background: #222;
+  color: #fff;
 }
 
 .container {
-    max-width: 500px;
-    width: 100%;
-    background: #fff;
-    border: 3px solid #222;
-    padding: 28px;
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  border: 3px solid #222;
+  padding: 28px;
 }
 
 h1 {
-    margin: 0 0 24px 0;
-    font-size: 1.5em;
-    font-weight: 700;
-    text-align: center;
+  margin: 0 0 24px 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  text-align: center;
 }
 
 .row {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .row > .field {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .field {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .field label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    font-size: 0.85em;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.85em;
 }
 
-input[type="number"],
+input[type='number'],
 select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    box-sizing: border-box;
-    border: 2px solid #222;
-    background: #fff;
-    -moz-appearance: textfield;
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  box-sizing: border-box;
+  border: 2px solid #222;
+  background: #fff;
+  -moz-appearance: textfield;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .drop-zone {
-    border: 3px dashed #222;
-    padding: 28px 20px;
-    text-align: center;
-    cursor: pointer;
-    background: #fafafa;
-    margin-bottom: 16px;
+  border: 3px dashed #222;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafafa;
+  margin-bottom: 16px;
 }
 
 .drop-zone:hover {
-    background: #f0f0f0;
+  background: #f0f0f0;
 }
 
 .drop-zone.has-file {
-    border-style: solid;
-    background: #e8ffe8;
+  border-style: solid;
+  background: #e8ffe8;
 }
 
 .drop-zone input {
-    display: none;
+  display: none;
 }
 
 .preview {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 .preview img {
-    max-width: 100%;
-    max-height: 160px;
-    border: 2px solid #222;
+  max-width: 100%;
+  max-height: 160px;
+  border: 2px solid #222;
 }
 
 .holidays-section {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .holidays-section label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    font-size: 0.85em;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.85em;
 }
 
 .holidays-input-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .holidays-input-row input {
-    flex: 1;
-    padding: 8px;
-    border: 2px solid #222;
-    font-size: 0.95em;
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #222;
+  font-size: 0.95em;
 }
 
 .holidays-input-row button {
-    padding: 8px 14px;
-    border: 2px solid #222;
-    background: #e0e0e0;
-    cursor: pointer;
-    font-weight: 600;
+  padding: 8px 14px;
+  border: 2px solid #222;
+  background: #e0e0e0;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .holidays-input-row button:hover {
-    background: #d0d0d0;
+  background: #d0d0d0;
 }
 
 .holidays-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .holiday-tag {
-    background: #ffcccc;
-    border: 2px solid #222;
-    padding: 4px 10px;
-    font-size: 0.85em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  background: #ffcccc;
+  border: 2px solid #222;
+  padding: 4px 10px;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .holiday-tag span {
-    cursor: pointer;
-    font-weight: bold;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .btn-generate {
-    width: 100%;
-    padding: 14px;
-    font-size: 1.1em;
-    font-weight: 700;
-    cursor: pointer;
-    background: #a0e7a0;
-    border: 3px solid #222;
-    box-shadow: 4px 4px 0 #222;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  background: #a0e7a0;
+  border: 3px solid #222;
+  box-shadow: 4px 4px 0 #222;
 }
 
 .btn-generate:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 #222;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #222;
 }
 
 .btn-generate:active {
-    transform: translate(4px, 4px);
-    box-shadow: none;
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }
 
 .btn-generate:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .top-controls {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .theme-btn {
-    padding: 8px 12px;
-    border: 2px solid #222;
-    background: #fff;
-    cursor: pointer;
-    font-size: 1em;
-    line-height: 1;
+  padding: 8px 12px;
+  border: 2px solid #222;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  line-height: 1;
 }
 
 .theme-btn:hover {
-    background: #f0f0f0;
+  background: #f0f0f0;
 }
 
 /* Dark mode */
 body.dark {
-    background: #1a1a1a;
+  background: #1a1a1a;
 }
 
 body.dark .container {
-    background: #2a2a2a;
-    border-color: #444;
+  background: #2a2a2a;
+  border-color: #444;
 }
 
 body.dark h1,
 body.dark label {
-    color: #eee;
+  color: #eee;
 }
 
-body.dark input[type="number"],
+body.dark input[type='number'],
 body.dark select {
-    background: #333;
-    border-color: #444;
-    color: #eee;
+  background: #333;
+  border-color: #444;
+  color: #eee;
 }
 
 body.dark .drop-zone {
-    background: #333;
-    border-color: #555;
-    color: #ccc;
+  background: #333;
+  border-color: #555;
+  color: #ccc;
 }
 
 body.dark .drop-zone:hover {
-    background: #3a3a3a;
+  background: #3a3a3a;
 }
 
 body.dark .drop-zone.has-file {
-    background: #2a3a2a;
-    border-color: #444;
+  background: #2a3a2a;
+  border-color: #444;
 }
 
 body.dark .preview img {
-    border-color: #444;
+  border-color: #444;
 }
 
 body.dark .holidays-input-row input {
-    background: #333;
-    border-color: #444;
-    color: #eee;
+  background: #333;
+  border-color: #444;
+  color: #eee;
 }
 
 body.dark .holidays-input-row button {
-    background: #444;
-    border-color: #555;
-    color: #eee;
+  background: #444;
+  border-color: #555;
+  color: #eee;
 }
 
 body.dark .holidays-input-row button:hover {
-    background: #555;
+  background: #555;
 }
 
 body.dark .holiday-tag {
-    background: #4a2a2a;
-    border-color: #555;
-    color: #eee;
+  background: #4a2a2a;
+  border-color: #555;
+  color: #eee;
 }
 
 body.dark .btn-generate {
-    background: #4a7a4a;
-    border-color: #444;
-    box-shadow: 4px 4px 0 #000;
-    color: #fff;
+  background: #4a7a4a;
+  border-color: #444;
+  box-shadow: 4px 4px 0 #000;
+  color: #fff;
 }
 
 body.dark .btn-generate:hover {
-    box-shadow: 2px 2px 0 #000;
+  box-shadow: 2px 2px 0 #000;
 }
 
 body.dark .btn-generate:disabled {
-    background: #444;
-    box-shadow: 4px 4px 0 #000;
+  background: #444;
+  box-shadow: 4px 4px 0 #000;
 }
 
 body.dark .lang-btn {
-    background: #333;
-    border-color: #444;
-    color: #eee;
+  background: #333;
+  border-color: #444;
+  color: #eee;
 }
 
 body.dark .lang-btn:hover {
-    background: #444;
+  background: #444;
 }
 
 body.dark .lang-btn.active {
-    background: #eee;
-    color: #222;
+  background: #eee;
+  color: #222;
 }
 
 body.dark .theme-btn {
-    background: #333;
-    border-color: #444;
+  background: #333;
+  border-color: #444;
 }
 
 body.dark .theme-btn:hover {
-    background: #444;
+  background: #444;
 }
