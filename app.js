@@ -16,8 +16,12 @@ const translations = {
     addBtn: 'Añadir',
     dropText: 'Arrastra una imagen o haz clic aquí',
     downloadBtn: 'Descargar PDF',
+    removeImageBtn: 'Eliminar imagen',
     font: 'Fuente',
     fontStyle: 'Estilo',
+    calendarPosition: 'Posición del calendario',
+    positionBelowImage: 'Debajo de la imagen',
+    positionBottom: 'Margen inferior',
     months: [
       'Enero',
       'Febrero',
@@ -58,8 +62,12 @@ const translations = {
     addBtn: 'Add',
     dropText: 'Drop an image or click here',
     downloadBtn: 'Download PDF',
+    removeImageBtn: 'Remove image',
     font: 'Font',
     fontStyle: 'Style',
+    calendarPosition: 'Calendar position',
+    positionBelowImage: 'Below image',
+    positionBottom: 'Bottom margin',
     months: [
       'January',
       'February',
@@ -114,8 +122,19 @@ function setLanguage(lang) {
   document.getElementById('labelHolidays').textContent = t.holidays;
   document.getElementById('labelFont').textContent = t.font;
   document.getElementById('labelFontStyle').textContent = t.fontStyle;
+  document.getElementById('labelCalendarPosition').textContent =
+    t.calendarPosition;
   document.getElementById('btnAddHoliday').textContent = t.addBtn;
   document.getElementById('generateBtn').textContent = t.downloadBtn;
+
+  // Actualizar opciones del selector de posición
+  const positionSelect = document.getElementById('calendarPosition');
+  const currentPosition = positionSelect.value;
+  positionSelect.innerHTML = `
+    <option value="below-image">${t.positionBelowImage}</option>
+    <option value="bottom">${t.positionBottom}</option>
+  `;
+  positionSelect.value = currentPosition || 'below-image';
 
   if (!uploadedImage) {
     document.getElementById('dropText').textContent = t.dropText;
@@ -142,14 +161,33 @@ function handleFile(file) {
   reader.onload = (event) => {
     uploadedImage = event.target.result;
     uploadedFileName = file.name;
-    document.getElementById(
-      'preview'
-    ).innerHTML = `<img src="${uploadedImage}" alt="Preview">`;
+    const preview = document.getElementById('preview');
+    const removeBtn = document.getElementById('btnRemoveImage');
+    preview.innerHTML = '';
+    preview.appendChild(removeBtn);
+    const img = document.createElement('img');
+    img.src = uploadedImage;
+    img.alt = 'Preview';
+    preview.appendChild(img);
     document.getElementById('dropZone').classList.add('has-file');
     document.getElementById('dropText').textContent = file.name;
     document.getElementById('generateBtn').disabled = false;
   };
   reader.readAsDataURL(file);
+}
+
+function removeImage() {
+  uploadedImage = null;
+  uploadedFileName = null;
+  const preview = document.getElementById('preview');
+  const removeBtn = document.getElementById('btnRemoveImage');
+  preview.innerHTML = '';
+  preview.appendChild(removeBtn);
+  document.getElementById('dropZone').classList.remove('has-file');
+  document.getElementById('dropText').textContent =
+    translations[currentLang].dropText;
+  document.getElementById('generateBtn').disabled = true;
+  document.getElementById('imageInput').value = '';
 }
 
 function addHoliday() {
@@ -198,6 +236,7 @@ function generatePDF() {
   const startDay = parseInt(document.getElementById('startDay').value);
   const fontFamily = document.getElementById('fontFamily').value;
   const fontStyle = document.getElementById('fontStyle').value;
+  const calendarPosition = document.getElementById('calendarPosition').value;
   const t = translations[currentLang];
 
   if (!uploadedImage) return;
@@ -208,7 +247,7 @@ function generatePDF() {
 
   const pageWidth = 148;
   const pageHeight = 210;
-  const margin = 10;
+  const margin = 8;
 
   pdf.setFillColor(255, 255, 255);
   pdf.rect(0, 0, pageWidth, pageHeight, 'F');
@@ -235,13 +274,22 @@ function generatePDF() {
 
   pdf.addImage(uploadedImage, 'JPEG', imgX, imgY, imgWidth, imgHeight);
 
-  const contentStartY = imgY + imgHeight + 13;
-
   const cellWidth = 9.5;
   const cellHeight = 8;
   const calendarWidth = 7 * cellWidth;
   const calendarStartX = pageWidth - margin - calendarWidth;
-  const calendarStartY = contentStartY;
+
+  // Calcular posición según la opción seleccionada
+  let calendarStartY;
+  if (calendarPosition === 'bottom') {
+    // Pegado al margen inferior: calcular desde abajo
+    const calendarHeight = 8 + 6 * cellHeight; // altura de encabezado + 6 filas
+    const bottomMargin = 3; // Margen reducido para pegarlo más al final
+    calendarStartY = pageHeight - bottomMargin - calendarHeight;
+  } else {
+    // Debajo de la imagen (posición original)
+    calendarStartY = imgY + imgHeight + 16;
+  }
 
   const dayLetters = t.dayLetters;
   const dayNames = [];
@@ -293,7 +341,7 @@ function generatePDF() {
   pdf.setFont(fontFamily, fontStyle);
   pdf.setTextColor(50, 50, 50);
   // Padding del mes
-  pdf.text(t.monthsShort[month], margin, calendarStartY + 11.5, {
+  pdf.text(t.monthsShort[month], margin + 1, calendarStartY + 11.5, {
     charSpace: 1,
   });
 

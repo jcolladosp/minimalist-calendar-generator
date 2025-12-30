@@ -69,6 +69,18 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="field">
+            <label for="calendarPosition" id="labelCalendarPosition"
+              >Posición del calendario</label
+            >
+            <select id="calendarPosition">
+              <option value="below-image">Debajo de la imagen</option>
+              <option value="bottom">Margen inferior</option>
+            </select>
+          </div>
+        </div>
+
         <div class="holidays-section">
           <label id="labelHolidays">Días festivos</label>
           <div class="holidays-input-row">
@@ -89,7 +101,16 @@
         <div class="drop-zone" id="dropZone">
           <input type="file" id="imageInput" accept="image/*" />
           <span id="dropText">Arrastra una imagen o haz clic aquí</span>
-          <div class="preview" id="preview"></div>
+          <div class="preview" id="preview">
+            <button
+              type="button"
+              onclick="removeImage()"
+              id="btnRemoveImage"
+              class="remove-image-btn"
+            >
+              ×
+            </button>
+          </div>
         </div>
 
         <button
