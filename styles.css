@@ -392,16 +392,19 @@ body.dark .theme-btn:hover {
 }
 
 .footer p {
-  margin: 0;
-  font-size: 0.85em;
-  color: #666;
+  margin: 0 !important;
+  font-size: 0.85em !important;
+  color: #666 !important;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  font-weight: 400;
+    sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
 }
 
 body.dark .footer p {
-  color: #aaa;
+  color: #aaa !important;
 }
 
 body.dark .github-btn {
