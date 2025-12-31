@@ -52,6 +52,8 @@ const translations = {
     ],
     days: ['Domingo', 'Lunes'],
     dayLetters: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+    footerPrivacy:
+      'Todo queda en tu navegador. No almacenamos ninguna información.',
   },
   en: {
     title: 'Minimalist Calendar',
@@ -98,6 +100,8 @@ const translations = {
     ],
     days: ['Sunday', 'Monday'],
     dayLetters: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    footerPrivacy:
+      "Everything stays in your browser. We don't store any information.",
   },
 };
 
@@ -126,6 +130,7 @@ function setLanguage(lang) {
     t.calendarPosition;
   document.getElementById('btnAddHoliday').textContent = t.addBtn;
   document.getElementById('generateBtn').textContent = t.downloadBtn;
+  document.getElementById('footerPrivacy').textContent = t.footerPrivacy;
 
   // Actualizar opciones del selector de posición
   const positionSelect = document.getElementById('calendarPosition');

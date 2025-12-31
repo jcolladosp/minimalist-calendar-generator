@@ -14,6 +14,12 @@ body {
   gap: 4px;
 }
 
+.right-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .wrapper {
   width: 100%;
   max-width: 500px;
@@ -243,7 +249,22 @@ input[type='number']::-webkit-inner-spin-button {
   gap: 12px;
   align-items: center;
 }
+.github-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 2px solid #222;
+  background: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  color: #222;
+  transition: all 0.2s;
+}
 
+.github-btn:hover {
+  background: #f0f0f0;
+}
 .theme-btn {
   padding: 8px 12px;
   border: 2px solid #222;
@@ -357,5 +378,32 @@ body.dark .theme-btn {
 }
 
 body.dark .theme-btn:hover {
+  background: #444;
+}
+
+.footer {
+  margin-top: 32px;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.85em;
+  color: #666;
+}
+
+body.dark .footer p {
+  color: #aaa;
+}
+
+body.dark .github-btn {
+  color: #eee;
+  border-color: #444;
+  background: #333;
+}
+
+body.dark .github-btn:hover {
   background: #444;
 }
