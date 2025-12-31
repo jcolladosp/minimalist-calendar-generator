@@ -260,10 +260,13 @@ input[type='number']::-webkit-inner-spin-button {
   text-decoration: none;
   color: #222;
   transition: all 0.2s;
+  box-shadow: none;
 }
 
 .github-btn:hover {
   background: #f0f0f0;
+  box-shadow: none;
+  text-decoration: none;
 }
 .theme-btn {
   padding: 8px 12px;
@@ -392,6 +395,9 @@ body.dark .theme-btn:hover {
   margin: 0;
   font-size: 0.85em;
   color: #666;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  font-weight: 400;
 }
 
 body.dark .footer p {
@@ -402,8 +408,10 @@ body.dark .github-btn {
   color: #eee;
   border-color: #444;
   background: #333;
+  box-shadow: none;
 }
 
 body.dark .github-btn:hover {
   background: #444;
+  box-shadow: none;
 }
